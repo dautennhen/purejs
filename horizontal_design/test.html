@@ -1,0 +1,116 @@
+<!doctype html>
+<html ng-app="Demo">
+<head>
+	<meta charset="utf-8">
+	<title>horizon design</title>
+	<!--libs-->
+	<script type="text/javascript" src="jquery203_min.js"></script>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="angular-route.js"></script>
+</head>
+<body>
+ 
+    <h1>
+        Directive Link, $observe, And $watch Functions Execute Inside An AngularJS Context
+    </h1>
+ 
+    <ul ng-controller="ListController">
+ 
+        <!-- These images have dynamic SRC attributes. -->
+        <li ng-repeat="image in images">
+ 
+            <p>
+                Loaded: {{ image.complete }}
+            </p>
+ 
+            <img
+                ng-src="{{ image.source }}"
+                bn-load="imageLoaded( image )"
+                width="16"
+                height="16"
+                style="border: 1px solid #CCCCCC"
+                />
+ 
+        </li>
+ 
+        <!-- This image has static SRC attribute. -->
+        <li>
+ 
+            <p>
+                Loaded: {{ staticImage.complete }}
+            </p>
+ 
+            <img
+                src="4.png"
+                bn-load="imageLoaded( staticImage )"
+                width="16"
+                height="16"
+                style="border: 1px solid #CCCCCC"
+                />
+ 
+        </li>
+ 
+    </ul>
+ 
+ 
+    <script type="text/javascript">
+       var Demo = angular.module("Demo", []);
+		Demo.controller("ListController", function ($scope) {
+			$scope.imageLoaded = function (image) {
+				image.complete = true;
+			};
+			$scope.images = [{
+					complete : false,
+					source : "1.png"
+				}, {
+					complete : false,
+					source : "2.png"
+				}, {
+					complete : false,
+					source : "3.png"
+				}
+			];
+			$scope.staticImage = {
+				complete : false,
+				source : "4.png"
+			};
+		});
+		Demo.directive("bnLoad", function () {
+			function link($scope, element, attributes) {
+				function handleLoadSync() {
+					logWithPhase("handleLoad - Sync");
+					$scope.$eval(attributes.bnLoad);
+				}
+				function handleLoadAsync() {
+					logWithPhase("handleLoad - Async");
+					$scope.$apply(function () {
+						handleLoadSync();
+					});
+				}
+				function logWithPhase(message) {
+					console.log(message, ":", $scope.$$phase);
+				}
+				if (element[0].src && element[0].complete) {
+					handleLoadSync();
+				} else {
+					element.on("load.bnLoad", handleLoadAsync);
+				}
+				attributes.$observe("src", function (srcAttribute) {
+					logWithPhase("$observe : " + srcAttribute);
+				});
+				$scope.$watch("( image || staticImage ).complete", function (newValue) {
+					logWithPhase("$watch : " + newValue);
+				});
+				$scope.$on("$destroy", function () {
+					element.off("load.bnLoad");
+				});
+			}
+			return ({
+				link : link,
+				restrict : "A"
+			});
+		});
+    </script>
+ 
+</body>
+</html>

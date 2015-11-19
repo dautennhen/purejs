@@ -1,0 +1,20 @@
+.view_content {
+	border : 1px solid pink
+}
+.green {
+	border : 1px solid green;
+	color : green;
+}
+.orange, .red {
+	border : 1px solid orange;
+	color : orange;
+}
+.red {
+	border : 1px solid red;
+	color : red;
+}
+.blue {
+	border : 1px solid blue;
+	color : blue;
+}
+

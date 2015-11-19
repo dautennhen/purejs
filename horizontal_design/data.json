@@ -1,0 +1,12 @@
+{
+	"category" : [
+		{"name":"cate1", "desc" : "cate1 desc"},
+		{"name":"cate2"},
+		{"name":"cate3"}
+	],
+	"product" : [
+		{"name":"p1", "desc" : "p1 desc", "cate":"cate1"},
+		{"name":"p2", "desc" : "p2 desc", "cate":"cate1"},
+		{"name":"p3", "desc" : "p3 desc", "cate":"cate2"}
+	]
+}

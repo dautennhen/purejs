@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ui router</title>
+	<script type="text/javascript" src="jquery203_min.js"></script>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="angular-ui-router.min.js"></script>
+	<script type="text/javascript" src="modules/uirouter.js"></script>
+	<link rel="stylesheet" href="module.css" />
+</head>
+<body ng-app="demo">
+       <div ui-view="header"></div>
+       <div ui-view="content"></div>
+       <div ui-view="footer"></div>
+    </body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>horizon design</title>
+	<!--libs-->
+	<script type="text/javascript" src="jquery203_min.js"></script>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<!--<script type="text/javascript" src="angular-route.js"></script>-->
+	<script type="text/javascript" src="underscore.js"></script>
+	<!--plugins-->
+	<script type="text/javascript" src="jgestures.js"></script>
+	<!--custom-->
+	<script type="text/javascript" src="module.js"></script>
+	<script type="text/javascript" src="interface.js"></script>
+	<script type="text/javascript" src="common.js"></script>
+	
+	<link rel="stylesheet" href="animate.css" />
+	<link rel="stylesheet" href="module.css" />
+</head>
+<body>
+
+<div class="container">
+	<div class="layers">
+		<div class="level level1 visible current" data-layer=1>
+			<div class="item current visible">
+				<div class="module module1">
+					<div ng-module="module1">
+						<h1>module1</h1>
+						<div ng-controller="module1Controller as mod1">
+							{{name}} {{mod1.abc}}
+							<!--<div module1-directive-abc info="obj1"></div>
+							<module1-directive-abc info="obj2"  lninfo="obj2222"></module1-directive-abc>-->
+							<div class="module1-directive-abc" data-info="obj1" data-tpl="mainview"></div>
+							
+							category<br />
+							<input class="inputcategory" ng-model="inputcategory" type="input" /><br />
+							product<br />
+							<input class="inputproduct" type="input" /><br />
+							<button ng-click="addAll()">do that</button>
+							
+							<tt>debug = {{inputcategory}}</tt><br/>
+							<span ng-bind="inputcategory"></span>
+							
+						</div>
+						 <div ng-controller="module1Controller1">
+							{{name}}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="item">
+				<div class="module module2">
+					<div ng-module="module2">
+						<h1>module2</h1>
+						<div ng-controller="module2Controller">
+							{{name}}
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="item">level1 item3</div>
+		</div>
+		<div class="level level2" data-layer=2>
+			<div class="item current visible">level2 item1
+				<div ng-module="module1">
+						<h1>module1</h1>
+						<div ng-controller="module1Controller3" data-info="cates" data-tpl="listview">
+							<button ng-click="loadListProduct()">load list</button>
+							<ul>
+								<li ng-repeat="category in cates">
+									<a href="" ng-click="addItem()">{{ category.name }} {{ category.desc }}</a>
+								</li>
+							<ul>
+						</div>
+				</div>
+			</div>
+			<div class="item">level2 item2
+				<!--<div ng-module="module2">
+					<h1>module2</h1>
+					<div ng-controller="module2Controller">
+						{{sth}}
+					</div>
+				</div>-->
+			</div>
+			<div class="item">level2 item3</div>
+		</div>
+		<div class="level level3" data-layer=3>
+			<div class="item current visible">level3 item1</div>
+			<div class="item">level3 item2</div>
+			<div class="item">level3 item3</div>
+		</div>
+	</div>
+</div>
+
+<div style="text-align:center">
+	<button onclick="interfaceClass.itemMoveLeft()">itemMoveLeft</button>
+	<button onclick="interfaceClass.itemMoveRight()">itemMoveRight</button>
+	<button onclick="interfaceClass.levelMoveLeft()">levelMoveLeft</button>
+	<button onclick="interfaceClass.levelMoveRight()">levelMoveRight</button>
+	<button onclick="interfaceClass.gotoItem(3, 2)">jump item</button>
+	<button onclick="historyClass.goBack()">goBack</button>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" ng-app="phonecatApp">
+<head>
+	<meta charset="utf-8">
+	<title>horizon design</title>
+	<!--libs-->
+	<script type="text/javascript" src="jquery203_min.js"></script>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="angular-route.min.js"></script>
+	<script type="text/javascript" src="angular-resource.min.js"></script>
+	<script type="text/javascript" src="underscore.js"></script>
+	<!--plugins-->
+	<script type="text/javascript" src="jgestures.js"></script>
+	<!--custom-->
+	<script type="text/javascript" src="modules/module.js"></script>
+	
+	<script type="text/javascript" src="interface.js"></script>
+	<script type="text/javascript" src="common.js"></script>
+	
+	<link rel="stylesheet" href="animate.css" />
+	<link rel="stylesheet" href="module.css" />
+</head>
+<body>
+
+<div class="container">
+	<div class="layers">
+		<div class="level level1 visible current" data-layer=1>
+			<div class="item current visible">
+				<div class="module module1">
+					<div >
+						<div ng-controller="PhoneListCtrl">
+							<div class="module1-directive-abc" data-info="haha" data-tpl="hahaha"></div>
+						</div>
+						<div ng-view></div>
+					</div>
+			</div>
+			<div class="item"></div>
+			<div class="item"></div>
+		</div>
+		<div class="level level2" data-layer=2>
+			<div class="item current visible">level2 item1</div>
+			<div class="item">level2 item2</div>
+			<div class="item">level2 item3</div>
+		</div>
+		<div class="level level3" data-layer=3>
+			<div class="item current visible">level3 item1</div>
+			<div class="item">level3 item2</div>
+			<div class="item">level3 item3</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

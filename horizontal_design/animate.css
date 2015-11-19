@@ -1,0 +1,60 @@
+.container {
+	width : 500px;
+	height : 500px;
+	overflow : hidden;
+	margin : auto;
+	border : 1px solid green;
+	position : relative
+}
+
+.layers {
+	width : 100%;
+	height : 100%;
+	border : 1px solid pink
+}
+/* level */
+.layers .level {
+	display : none;
+	position : absolute;
+	width : 100%;
+	height : 100%;
+}
+
+/* item */
+.layers .level.current .item{
+	display : none;
+	width : 100%;
+	height : 100%;
+	position : absolute;
+}
+
+.layers .level .item.visible, .layers .level.visible{
+	display : block
+}
+
+.layers .level .item.right, .layers .level.right{
+	-webkit-transform: translate3d(500px, 0px, 0px);
+	background-color: #336699;
+}
+
+.layers .level .item.left, .layers .level.left{
+	-webkit-transform: translate3d(-500px, 0px, 0px);
+	background-color: gray;
+}
+
+.layers .level .item.current.moveLeft, .layers .level.current.moveLeft{
+	-webkit-transform: translate3d(-500px, 0px, 0px);
+	background-color: #336699;
+}
+
+.layers .level .item.current.moveRight, .layers .level.current.moveRight{
+	-webkit-transform: translate3d(500px, 0px, 0px);
+	background-color: #336699;
+}
+
+.layers .level .item.current, .layers .level.current {
+   -webkit-transform: translate3d(0px, 0px, 0px);
+   background-color: darkorange;
+   -webkit-transition-delay : 0.1s;
+   -webkit-transition: all 0.2s ease-in;
+}
